@@ -10,7 +10,28 @@ Deadline date: 2024-02-13
 
 Use: Node.js v20.11.0 LTS
 run command: npm run build - for build 
-run command: npm run start:dev-env - for server run
+run command: npm run start:dev - for server run
+
+
+API endpoints:
+
+GET http://localhost:4000/api/users
+GET http://localhost:4000/api/users/1abb0708-7c87-4bb5-92df-6a0a4419012d
+POST http://localhost:4000/api/users
+{
+    "username": "New User",
+    "age": 33,
+    "hobbies": ["football"]
+}
+
+PUT http://localhost:4000/api/users/452a10c3-2b9c-4eeb-86ec-39bf3fad7fc5
+{
+"username": "Updated User",
+"age": 20,
+"hobbies": ["cycling", "swimming"]
+}
+
+DELETE http://localhost:4000/api/users/452a10c3-2b9c-4eeb-86ec-39bf3fad7fc5d
 
 
 

@@ -12,11 +12,15 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
+
+    "start:dev": "node ./dist/index.js",
+    "nodemon:dev": "nodemon ./dist/index.js",
+
     "start:dev-env": "NODE_OPTIONS='--experimental-specifier-resolution=node' node ./dist/index.js",
     "start:prod-env": "NODE_OPTIONS='--experimental-specifier-resolution=node'  node ./dist/index.js",
 
-    "nodemon:dev": "NODE_OPTIONS='--experimental-specifier-resolution=node' nodemon dist/index.js",
-    "nodemon:old": "NODE_OPTIONS='--experimental-specifier-resolution=node' nodemon ./dist/index.js",
+    "nodemon:dev-exp": "NODE_OPTIONS='--experimental-specifier-resolution=node' nodemon dist/index.js",
+    "nodemon:old-exp": "NODE_OPTIONS='--experimental-specifier-resolution=node' nodemon ./dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
