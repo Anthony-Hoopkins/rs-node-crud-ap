@@ -8,7 +8,7 @@ import { errorHandler } from '../../core/handlers/error.handler';
 import { HTTP_STATUSES } from '../../core/consts/http-error-statuses';
 
 
-export const usersController = (req: IncomingMessage, resp: ServerResponse): void => {
+export const usersController = async (req: IncomingMessage, resp: ServerResponse): Promise<void> => {
   switch (req.method) {
     case HttpMethods.Get:
       const lastPath = getLastUrlPath(req.url as string);
@@ -21,13 +21,14 @@ export const usersController = (req: IncomingMessage, resp: ServerResponse): voi
 
       break;
     case HttpMethods.Post:
-      createUser(req, resp);
+      const userData = await getBodyData(req);
+      createUser(userData, resp);
 
       break;
     case HttpMethods.Put:
       const userId = getLastUrlPath(req.url as string);
-      const userData = getBodyData(req);
-      updateUser(userId, userData, resp);
+      const userDataUpd = await getBodyData(req);
+      updateUser(userId, userDataUpd, resp);
 
       break;
     case HttpMethods.Delete:
@@ -38,7 +39,6 @@ export const usersController = (req: IncomingMessage, resp: ServerResponse): voi
     default:
       errorHandler(resp, HTTP_STATUSES.NOT_FOUND_404);
   }
-
 };
 
 

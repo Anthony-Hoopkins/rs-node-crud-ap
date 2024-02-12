@@ -4,6 +4,6 @@ env/
 build/
 dist/
 downloads/
-.env
+
 .idea/
 node_modules/

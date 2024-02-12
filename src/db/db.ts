@@ -6,14 +6,28 @@ export type DBUserType = {
 }
 
 const db: DBUserType[] = [
-  { id: 'init_id', username: 'Init_User', age: 22, hobbies: ['tennis'] },
+  { id: '06799d93-f8ca-4c13-a019-584377fc5601', username: 'Init_User', age: 27, hobbies: ['tennis'] },
 ];
 
-export function updateUserById(userId: string, userData: DBUserType): DBUserType | null {
+export function getAllDBUsers(): DBUserType[] {
+  return db;
+}
+
+export function getDBUserById(userId: string): DBUserType | undefined {
+  return db.find((item: DBUserType) => item.id === userId);
+}
+
+export function createNewDBUser(userData: DBUserType): DBUserType[] {
+  db.push(userData);
+
+  return db;
+}
+
+export function updateDbUserById(userId: string, userData: DBUserType): DBUserType | null {
   const index = db.findIndex((item: DBUserType) => item.id === userId);
 
-  if (index) {
-    db.splice(index, 1, userData);
+  if (index !== -1) {
+    db.splice(index, 1, { ...userData, id: userId });
   } else {
     return null;
   }
@@ -21,27 +35,14 @@ export function updateUserById(userId: string, userData: DBUserType): DBUserType
   return userData;
 }
 
-export function removeUserById(userId: string): DBUserType[] | undefined {
+export function removeDBUserById(userId: string): boolean {
   const index = db.findIndex((item: DBUserType) => item.id === userId);
 
-  if (index) {
+  if (index !== -1) {
     db.splice(index, 1);
+
+    return true;
   }
 
-  return db;
-}
-
-
-export function createNewUser(userId: string, userData: DBUserType): DBUserType[] {
-  db.push(userData);
-
-  return db;
-}
-
-export function findUserById(userId: string): DBUserType | undefined {
-  return db.find((item: DBUserType) => item.id === userId);
-}
-
-export function getAllUsers(): DBUserType[] {
-  return db;
+  return false;
 }
