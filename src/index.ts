@@ -7,7 +7,7 @@ import { errorHandler } from './core/handlers/error.handler.js';
 
 const port = process.env.PORT || DEFAULT_PORT;
 
-const server = http.createServer((request: IncomingMessage, response: ServerResponse) => {
+export const server = http.createServer((request: IncomingMessage, response: ServerResponse) => {
   try {
     if (request.url?.includes(API_USERS_PREFIX)) {
       usersController(request, response);

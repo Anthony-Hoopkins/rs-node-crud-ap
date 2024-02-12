@@ -12,25 +12,25 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-
     "start:dev": "node ./dist/index.js",
     "nodemon:dev": "nodemon ./dist/index.js",
-
     "start:dev-env": "NODE_OPTIONS='--experimental-specifier-resolution=node' node ./dist/index.js",
     "start:prod-env": "NODE_OPTIONS='--experimental-specifier-resolution=node'  node ./dist/index.js",
-
     "nodemon:dev-exp": "NODE_OPTIONS='--experimental-specifier-resolution=node' nodemon dist/index.js",
     "nodemon:old-exp": "NODE_OPTIONS='--experimental-specifier-resolution=node' nodemon ./dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --detectOpenHandles",
+    "test:silent": "jest --silent"
   },
   "dependencies": {
     "cross-env": "^7.0.3",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.12",
     "@types/node": "16.18.80",
     "@types/supertest": "^6.0.2",
     "dotenv": "^16.4.2",
+    "jest": "^29.7.0",
     "nodemon": "^3.0.3",
     "supertest": "^6.3.4",
     "ts-jest": "^29.1.2",
