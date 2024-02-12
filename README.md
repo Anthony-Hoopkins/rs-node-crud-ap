@@ -10,8 +10,12 @@ Deadline date: 2024-02-13
 
 Use: Node.js v20.11.0 LTS
 run command: npm run build - for build 
-run command: npm run start:dev - for server run
+run command: npm run start:dev - for server run                  The Server started on port: 4000
 
+For dev environment mode: run command: npm run start:dev-env     The Server started on port: 4001
+For dev environment mode: run command: npm run start:prod-env    The Server started on port: 4003
+
+You can change env/.dev.env or env/.prod.env ports and rerun it for change server ports
 
 API endpoints:
 
@@ -52,8 +56,8 @@ Advanced Scope
     +10 Processing of requests to non-existing endpoints implemented properly
     +10 Errors on the server side that occur during the processing of a request should be handled and processed properly
 
-    0 Development mode: npm script start:dev implemented properly
-    0 Production mode: npm script start:prod implemented properly
+    +10 Development mode: npm script start:dev implemented properly
+    +10 Production mode: npm script start:prod implemented properly
 
 Hacker Scope
 

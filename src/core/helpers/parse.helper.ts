@@ -19,3 +19,21 @@ export const getBodyData = async (request: IncomingMessage): Promise<CreateUserD
 
   return JSON.parse(data);
 };
+
+export const parseArgs = () => {
+  const args = process.argv;
+
+  try {
+    return args.reduce((result: any, value) => {
+      if (value.startsWith('--') && value.length > 2) {
+        const argsArray = value.split('=');
+
+        result[argsArray[0].substring(2)] = argsArray[1];
+      }
+
+      return result;
+    }, {});
+  } catch {
+    return {};
+  }
+};

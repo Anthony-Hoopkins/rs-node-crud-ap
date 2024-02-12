@@ -4,8 +4,9 @@ import { API_USERS_PREFIX, DEFAULT_PORT } from './core/consts/consts.js';
 import { usersController } from './modules/users/users.controller.js';
 import { HTTP_STATUSES } from './core/consts/http-error-statuses.js';
 import { errorHandler } from './core/handlers/error.handler.js';
+import { getPortViaEnv } from './core/helpers/env.helper.js';
 
-const port = process.env.PORT || DEFAULT_PORT;
+const port = getPortViaEnv() || DEFAULT_PORT;
 
 export const server = http.createServer((request: IncomingMessage, response: ServerResponse) => {
   try {
