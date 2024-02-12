@@ -1,7 +1,8 @@
 # rs-node-crud-ap
 Assignment: CRUD API Description  Your task is to implement simple CRUD API using in-memory database underneath.
 
-Link to the task: https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/basic-testing/assignment.md
+Link to the task: 
+https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/crud-api/assignment.md
 
 Deadline date: 2024-02-13
 
