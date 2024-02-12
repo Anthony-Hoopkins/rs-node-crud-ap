@@ -6,6 +6,14 @@ https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/crud-ap
 
 Deadline date: 2024-02-13
 
+## How to use App:
+
+Use: Node.js v20.11.0 LTS
+run command: npm run build - for build 
+run command: npm run start:dev-env - for server run
+
+
+
 Self-check: Basic Scope
 
     +10 The repository with the application contains a Readme.md file containing detailed instructions for installing, running and using the application
@@ -22,12 +30,14 @@ Advanced Scope
     +30 Task implemented on Typescript
     +10 Processing of requests to non-existing endpoints implemented properly
     +10 Errors on the server side that occur during the processing of a request should be handled and processed properly
-    +10 Development mode: npm script start:dev implemented properly
-    +10 Production mode: npm script start:prod implemented properly
+
+    0 Development mode: npm script start:dev implemented properly
+    0 Production mode: npm script start:prod implemented properly
 
 Hacker Scope
 
     +30 There are tests for API (not less than 3 scenarios)
-    +50 There is horizontal scaling for application with a load balancer
 
-Total: 222 / 222
+    0 There is horizontal scaling for application with a load balancer
+
+Total: 172 / 222

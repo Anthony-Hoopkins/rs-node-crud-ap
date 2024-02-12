@@ -1,8 +1,9 @@
 import http, { IncomingMessage, ServerResponse } from 'node:http';
-import { API_USERS_PREFIX, DEFAULT_PORT } from './core/consts/consts';
-import { usersController } from './modules/users/users.controller';
-import { HTTP_STATUSES } from './core/consts/http-error-statuses';
-import { errorHandler } from './core/handlers/error.handler';
+
+import { API_USERS_PREFIX, DEFAULT_PORT } from './core/consts/consts.js';
+import { usersController } from './modules/users/users.controller.js';
+import { HTTP_STATUSES } from './core/consts/http-error-statuses.js';
+import { errorHandler } from './core/handlers/error.handler.js';
 
 const port = process.env.PORT || DEFAULT_PORT;
 

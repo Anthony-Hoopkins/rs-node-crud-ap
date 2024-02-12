@@ -1,6 +1,6 @@
 
 # Distribution / packaging
-env/
+
 build/
 dist/
 downloads/

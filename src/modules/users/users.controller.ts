@@ -1,11 +1,12 @@
 import { ServerResponse } from 'http';
-import { HttpMethods } from '../../core/consts/enums/enums';
-import { getBodyData, getLastUrlPath } from '../../core/helpers/parse.helper';
 import { IncomingMessage } from 'node:http';
-import { USERS_PREFIX } from '../../core/consts/consts';
-import { createUser, getUserById, getUsers, removeUser, updateUser } from './users.service';
-import { errorHandler } from '../../core/handlers/error.handler';
-import { HTTP_STATUSES } from '../../core/consts/http-error-statuses';
+
+import { HttpMethods } from '../../core/consts/enums/enums.js';
+import { getBodyData, getLastUrlPath } from '../../core/helpers/parse.helper.js';
+import { USERS_PREFIX } from '../../core/consts/consts.js';
+import { createUser, getUserById, getUsers, removeUser, updateUser } from './users.service.js';
+import { errorHandler } from '../../core/handlers/error.handler.js';
+import { HTTP_STATUSES } from '../../core/consts/http-error-statuses.js';
 
 
 export const usersController = async (req: IncomingMessage, resp: ServerResponse): Promise<void> => {
@@ -21,14 +22,22 @@ export const usersController = async (req: IncomingMessage, resp: ServerResponse
 
       break;
     case HttpMethods.Post:
-      const userData = await getBodyData(req);
-      createUser(userData, resp);
+      try {
+        const userData = await getBodyData(req);
+        createUser(userData, resp);
+      } catch {
+        errorHandler(resp, HTTP_STATUSES.SERVER_ERROR_500);
+      }
 
       break;
     case HttpMethods.Put:
-      const userId = getLastUrlPath(req.url as string);
-      const userDataUpd = await getBodyData(req);
-      updateUser(userId, userDataUpd, resp);
+      try {
+        const userId = getLastUrlPath(req.url as string);
+        const userDataUpd = await getBodyData(req);
+        updateUser(userId, userDataUpd, resp);
+      } catch {
+        errorHandler(resp, HTTP_STATUSES.SERVER_ERROR_500);
+      }
 
       break;
     case HttpMethods.Delete:

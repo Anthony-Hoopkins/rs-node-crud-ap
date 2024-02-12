@@ -5,19 +5,17 @@ export const getLastUrlPath = (url: string): string => {
   const pathArr = url.split('/');
 
   return pathArr.pop() || pathArr.pop() as string;
-}
+};
 
 export const getBodyData = async (request: IncomingMessage): Promise<CreateUserDto> => {
-  let data = "";
+  let data = '';
 
-  request.on("data", chunk => {
+  request.on('data', chunk => {
     data += chunk;
   });
 
-  await request.on("end", () => {
-    console.log(data);
-    console.log(JSON.parse(data));
+  await request.on('end', () => {
   });
 
   return JSON.parse(data);
-}
+};

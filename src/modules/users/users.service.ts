@@ -1,10 +1,10 @@
 import { ServerResponse } from 'http';
 import { CreateUserDto } from './dto/create-user.dto';
 
-import { createNewDBUser, getAllDBUsers, getDBUserById, removeDBUserById, updateDbUserById } from '../../db/db';
-import { HTTP_STATUSES } from '../../core/consts/http-error-statuses';
-import { errorHandler } from '../../core/handlers/error.handler';
-import { uuidV4Generate, uuidValidate } from '../../core/helpers/uuid.helper';
+import { createNewDBUser, getAllDBUsers, getDBUserById, removeDBUserById, updateDbUserById } from '../../db/db.js';
+import { HTTP_STATUSES } from '../../core/consts/http-error-statuses.js';
+import { errorHandler } from '../../core/handlers/error.handler.js';
+import { uuidV4Generate, uuidValidate } from '../../core/helpers/uuid.helper.js';
 
 
 export function getUsers(resp: ServerResponse): void {
@@ -16,7 +16,7 @@ export function getUsers(resp: ServerResponse): void {
 
 export function getUserById(userId: string, resp: ServerResponse): void {
   if (!uuidValidate(userId)) {
-    errorHandler(resp, HTTP_STATUSES.BAD_REQUEST_400);
+    errorHandler(resp, HTTP_STATUSES.BAD_REQUEST_400_UUID);
 
     return;
   }
@@ -46,12 +46,12 @@ export function createUser(data: CreateUserDto, resp: ServerResponse): void {
 
 export function updateUser(userId: string, userData: CreateUserDto, resp: ServerResponse): void {
   if (!uuidValidate(userId)) {
-    errorHandler(resp, HTTP_STATUSES.BAD_REQUEST_400);
+    errorHandler(resp, HTTP_STATUSES.BAD_REQUEST_400_UUID);
 
     return;
   }
 
-  if (isUserDataValid(userData)) {
+  // if (isUserDataValid(userData)) {
     const responce = updateDbUserById(userId, userData);
 
     if (responce) {
@@ -60,10 +60,9 @@ export function updateUser(userId: string, userData: CreateUserDto, resp: Server
     } else {
       errorHandler(resp, HTTP_STATUSES.NOT_FOUND_404_User);
     }
-  } else {
-    errorHandler(resp, HTTP_STATUSES.BAD_REQUEST_400_BODY);
-  }
-
+  // } else {
+  //   errorHandler(resp, HTTP_STATUSES.BAD_REQUEST_400_BODY);
+  // }
 }
 
 export function removeUser(userId: string, resp: ServerResponse) {
